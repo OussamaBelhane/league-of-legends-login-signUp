@@ -1,0 +1,269 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px;
+    overflow-x: auto; /* Ensure the table stays within the container */
+}
+
+body.dark-mode .container {
+    background: #1e1e1e;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+body.dark-mode h1 {
+    color: #e0e0e0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+body.dark-mode input {
+    background: #333;
+    color: #e0e0e0;
+    border: 1px solid #555;
+}
+
+button {
+    padding: 10px;
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button.add {
+    background: #0078d7;
+}
+
+button.add:hover {
+    background: #005bb5;
+}
+
+body.dark-mode button {
+    background: #005bb5;
+}
+
+body.dark-mode button:hover {
+    background: #003f8a;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto; /* Ensure the table stays within the container */
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+body.dark-mode th, body.dark-mode td {
+    border: 1px solid #555;
+}
+
+th {
+    background: #0078d7;
+    color: #fff;
+}
+
+body.dark-mode th {
+    background: #005bb5;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.actions button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.actions .edit {
+    background: #ffc107;
+    color: #fff;
+}
+
+.actions .delete {
+    background: #dc3545;
+    color: #fff;
+}
+
+.actions .status {
+    background: #17a2b8;
+    color: #fff;
+}
+
+.actions .edit:hover {
+    background: #e0a800;
+}
+
+.actions .delete:hover {
+    background: #c82333;
+}
+
+.actions .status:hover {
+    background: #138496;
+}
+
+.feedback {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+    font-size: 14px;
+}
+
+.feedback.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.feedback.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.feedback.delete {
+    background: #f8d7da;
+    color: #dc3545;
+    border: 1px solid #f5c6cb;
+}
+
+.feedback.update {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.password-group {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    fill: #000000; /* Ensure the icon color is black */
+}
+
+body.dark-mode .toggle-password {
+    fill: #e0e0e0;
+}
+
+.user-status-panel {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+body.dark-mode .user-status-panel {
+    background: #1e1e1e;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.user-status-panel p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+body.dark-mode .user-status-panel p {
+    color: #e0e0e0;
+}
+
+.user-status-panel button {
+    margin-top: 20px;
+    padding: 10px;
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.user-status-panel button:hover {
+    background: #005bb5;
+}
+
+body.dark-mode .user-status-panel button {
+    background: #005bb5;
+}
+
+a{
+    color: #000000;
+    text-decoration: none;
+}
+
+ a:visited {
+    color: #000000;
+    text-decoration: none;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Operations</title>
+    <link rel="stylesheet" href="crud.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Management</h1>
+        <button id="theme-toggle-button" style="position: absolute; top: 10px; right: 10px; background: transparent; border: none;">
+            <img src="/public/img/moon.png" alt="Toggle Theme" width="24" height="24" />
+        </button>
+        <form id="user-form">
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="form-group password-group">
+                <input type="password" id="password" placeholder="Password" required>
+                <img src="/public/img/hide-black.svg" class="toggle-password" id="toggle-password" />
+            </div>
+            <button type="submit" class="add">Add User</button>
+        </form>
+        <div id="feedback" class="feedback"></div>
+        <table id="user-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- User rows will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+    <div id="user-status-panel" class="user-status-panel">
+        <div id="user-status-content"></div>
+        <button id="close-panel-button">Close</button>
+    </div>
+    <script src="crud.js"></script>
+</body>
+</html>
