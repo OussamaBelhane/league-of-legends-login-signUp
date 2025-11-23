@@ -19,6 +19,8 @@
   <img src="https://drive.google.com/uc?export=view&id=1IThQqYXzYSd3gfxQmx53RfW-_pKXm7YS"
        alt="Watch the Demo Video" 
        width="500">
+  <br>
+  <strong>▶️ Watch the Demo Video</strong>
 </a>
 </p>
 
