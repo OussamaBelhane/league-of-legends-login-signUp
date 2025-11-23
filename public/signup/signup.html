@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="icon" type="image/svg+xml" href="/img/logo.ico" />
+    <link rel="stylesheet" href="signup.css" />
+  </head>
+  
+  <body>
+    <div id="video-container">
+      <video id="background-video" width="100%" height="100%" loop autoplay="autoplay" muted>
+        <source src="/videos/STILL HERE ｜ But It includes Arcane and Valorant.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div id="root">
+      <div class="nav-container">
+        <span class="nav-item selected" data-target="email-section"></span>
+        <span class="nav-item" data-target="birthday-section"></span>
+        <span class="nav-item" data-target="username-section"></span>
+        <span class="nav-item" data-target="password-section"></span>
+        <span class="nav-item" data-target="animation-section"></span>
+      </div>
+      
+      <main>
+        <!-- Email Section -->
+        
+        <div id="email-section" class="section active">
+          <form onsubmit="return false;">
+            <div class="header">
+              <header>
+                <h5 class="title">What's your email?</h5>
+                <h6 class="subtitle">Don't worry we won't tell anyone.</h6>
+              </header>
+            </div>
+            <div class="input_userpwd">
+              <div class="input-container-user">
+                <input
+                  class="input_email"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder=" "
+                />
+                <label for="email" class="label_email">Email</label>
+                <span dir="ltr" class="span_email">Email</span>
+              </div>
+            </div>
+            <div class="button-container">
+              <button type="button" class="sign-in-button" data-next="birthday-section" disabled>
+                <img src="/img/7ff6b660-60f6-4e32-9fac-66ffa0406ebc.svg" class="sign_img"/>
+              </button>
+              
+            </div>
+            <div class="footer">
+              <footer>
+                <a href="/login/login.html">Already have an account?</a>
+              </footer>
+          </div>
+          </form>
+        </div>
+        <!-- Birthday Section -->
+        <div id="birthday-section" class="section">
+          <form onsubmit="return false;">
+            <div class="header">
+              <header>
+                <h5 class="title">When were you born?</h5>
+                <h6 class="subtitle">Let's find out how old you are.</h6>
+              </header>
+            </div>
+            
+            <div id="birthday-group" class="group-input">
+              <div class="day-input">
+                <input
+                  class="input-day"
+                  type="number" 
+                  id="day"
+                  name="day"
+                  placeholder="DD"
+                  maxlength="2"
+                />
+                <label for="day" class="label_day">Day</label>
+                <span dir="ltr" class="span_day">Day</span>
+              </div>
+              <div class="month-input">
+                <input
+                  class="input-month"
+                  type="number"
+                  id="month"
+                  name="month"
+                  placeholder="MM"
+                  maxlength="2"
+                />
+                <label for="month" class="label_month">Month</label>
+                <span dir="ltr" class="span_month">Month</span>
+              </div>
+              <div class="year-input">
+                <input
+                  class="input-year"
+                  type="number"
+                  id="year"
+                  name="year"
+                  placeholder="YYYY"
+                />
+                <label for="year" class="label_year">Year</label>
+                <span dir="ltr" class="span_year">Year</span>
+              </div>
+            </div>
+            
+
+
+            <div class="button-container">
+              <button type="button" class="sign-in-button nav-but" data-next="username-section" disabled>
+                <img src="/img/7ff6b660-60f6-4e32-9fac-66ffa0406ebc.svg" class="sign_img"/>
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- Username Section -->
+        <div id="username-section" class="section">
+          <form onsubmit="return false;">
+            <div class="header">
+              <header>
+                <h5 class="title">Choose a username</h5>
+                <h6 class="subtitle">Used for sign in to all our games.</h6>
+              </header>
+            </div>
+            <div class="input-container-user">
+              <input
+              class="input_username"
+                type="text"
+                id="username"
+                name="username"
+                placeholder=" "
+              />
+              <label for="username" class="label_username">Username</label>
+              <span dir="ltr" class="span_username">Username</span>
+            </div>
+            <div class="button-container">
+              <button type="button" class="sign-in-button nav-but" data-next="password-section" disabled>
+                <img src="/img/7ff6b660-60f6-4e32-9fac-66ffa0406ebc.svg" class="sign_img"/>
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- Password Section -->
+        <div id="password-section" class="section">
+          <form onsubmit="return false;">
+            <div class="header password-header">
+              <header>
+                <h5 class="title-pwd">Choose a password</h5>
+                <h6 class="subtitle-pwd">Make sure it's a good one.</h6>
+              </header>
+            </div>
+            <div class="input-container-pwd">
+              <input
+                class="input_password"
+                type="password"
+                id="password"
+                name="password"
+                placeholder=" "
+              />
+              <label for="password" class="label_password">Password</label>
+              <span dir="ltr" class="span_password">Password</span>
+              <img src="/img/hide.svg" class="toggle-password" id="toggle-password" />
+            </div>
+            <div class="password-strength" id="password-strength"></div>
+            <div class="password-requirements">
+              <p class="requirement">Must be Okay strength or better.</p>
+              <p class="requirement">Password is at least 8 characters long.</p>
+              <p class="requirement">Password includes two of the following:<br>letter, number, or symbol.</p>
+            </div>
+            <div class="input-container-pwd">
+              <input
+                class="input_confirm_password"
+                type="password"
+                id="confirm_password"
+                name="confirm_password"
+                placeholder=" "
+              />
+              <label for="confirm_password" class="label_confirm_password">Confirm Password</label>
+              <span dir="ltr" class="span_confirm_password">Confirm Password</span>
+              <img src="/img/hide.svg" class="toggle-password" id="toggle-confirm-password" />
+            </div>
+            <div class="button-container btn-pwd">
+              <button type="button" class="sign-in-button nav-but" data-next="animation-section" disabled>
+                <img src="/img/7ff6b660-60f6-4e32-9fac-66ffa0406ebc.svg" class="sign_img"/>
+              </button>
+            </div>
+          </form>
+        </div>
+        <!-- Animation Section -->
+        <div id="animation-section" class="section">
+          <div class="ui-abstergo">
+            <div class="abstergo-loader">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="ui-text">
+              <span>Creating Account </span>
+              <span class="ui-dot"></span>
+              <span class="ui-dot"></span>
+              <span class="ui-dot"></span>
+            </div>
+          </div>
+        </div>
+      </main>
+      
+    <script src="signup.js"></script>
+  </body>
+</html>

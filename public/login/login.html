@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <link rel="icon" type="image/svg+xml" href="/img/logo.ico" />
+    <link
+      href="https://db.onlinewebfonts.com/c/b621d1ffb46493164fd62fb7a83ab0ff?family=Mark+W05+Medium"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div id="root">
+      <div class="header">
+        <header>
+          <h5 class="title">Sign in</h5>
+        </header>
+      </div>
+      <main>
+        <!-- Sign In Form -->
+        <form>
+
+            <!-- Username and Password Input -->
+          <div class="input_userpwd">
+            <!-- Username Input -->
+            <div class="input-container-user">
+              <input
+              class="input_username"
+                type="text"
+                id="username"
+                name="username"
+                placeholder=" "
+              />
+              <label for="username" class="label_username">Username</label>
+              <span dir="ltr" class="span_username">Username</span>
+            </div>
+
+            <!-- Password Input -->
+            <div class="input-container-pwd">
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder=" "
+              />
+              <label for="password" class="label_password">Password</label>
+              <span dir="ltr" class="span_password">Password</span>
+              <img src="/img/hide.svg" class="toggle-password" id="toggle-password" />
+            </div>
+          </div>
+
+          <!-- Remember Me Checkbox -->
+          <div class="remember-me-container">
+            <input type="checkbox" name="remember-me" id="rememberme"  />
+            <h6>
+                <label for="rememberme" class="label_remember">Stay signed in</label>
+              </h6>
+          </div>
+          
+          <!-- Submit Button -->
+          <div class="button-container">
+            <button type="submit" class="sign-in-button">
+              <img src="/img/7ff6b660-60f6-4e32-9fac-66ffa0406ebc.svg" class="sign_img"/>
+            </button>
+          </div>
+        </form>
+        <br>
+        <a href="/signup/signup.html">Create account</a>
+      </main>
+    </div>
+    <script src="login.js"></script>
+  </body>
+</html>

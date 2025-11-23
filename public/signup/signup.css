@@ -1,0 +1,1290 @@
+* {
+    font-family: "Mark W05 Medium", sans-serif;
+}
+
+body {
+    font-family: "Mark W05 Medium", sans-serif;
+    display: flex;
+    flex-direction: column;
+    /* Align items vertically */
+    height: 100vh;
+    /* Full height */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#video-container {
+    position: fixed;
+    /* Fix position to ensure it stays in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Full width */
+    height: 100vh;
+    /* Full height */
+    overflow: hidden;
+    background-color: rgb(9, 12, 19);
+    z-index: -1;
+}
+
+#background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* Add media query for phone screens */
+@media screen and (max-width: 768px) {
+    #video-container {
+        display: none;
+        /* Hide video container */
+    }
+
+    body {
+        background-image: url("/img/arcane2_desktop_default_2x.jpeg");
+        /* Use background image */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+.title {
+    margin: 0px;
+    padding-top: 48px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.header {
+    padding-bottom: 5px;
+    /* Reduce padding-bottom */
+    margin-bottom: 5px;
+    /* Reduce margin-bottom */
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: right bottom;
+    background-image: url("/img/download.jpg");
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    width: 391px;
+    max-width: 415px;
+    height: 607px;
+    /* Make the height fit 100% of the screen */
+    padding: 32px;
+    margin-left: auto;
+    /* Add this line to move the root section to the right */
+    margin-right: 20px;
+    /* Add margin-right */
+    margin-top: auto;
+    /* Center vertically */
+    margin-bottom: auto;
+    /* Center vertically */
+    position: relative;
+    /* Ensure nav-container stays on top */
+}
+
+@media screen and (min-width: 1040px) {
+    #root {
+        min-height: 566px;
+        padding-left: 48px;
+        padding-right: 48px;
+        padding-bottom: 24px;
+    }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h5 {
+    margin: 0px;
+    font-size: 25px;
+    padding-top: 48px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    text-transform: none;
+}
+
+h6 {
+    margin: 0px;
+    font-size: 20px;
+    font-weight: 700;
+    padding-top: 20px;
+    /* Decrease space between h5 and h6 */
+    text-align: center;
+    color: rgb(115, 115, 115);
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    text-transform: none;
+}
+
+/* nav-container styles */
+.nav-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: absolute;
+    /* Position relative to root */
+    top: 16px;
+    width: 100%;
+    background-color: transparent;
+    /* Optional: Add background color for better visibility */
+    z-index: 1;
+    /* Ensure it stays above other elements */
+}
+
+.nav-item {
+    width: 24px;
+    height: 3px;
+    background: rgb(138, 138, 138);
+    opacity: 0.2;
+    cursor: pointer;
+}
+
+.nav-item.selected {
+    background: rgb(209, 54, 57);
+    opacity: 1;
+}
+
+input:focus+label,
+input:not(:placeholder-shown)+label {
+    transform: translateY(-59px);
+    font-size: 12px;
+    visibility: hidden;
+    /* Hide label */
+}
+
+.label_username,
+.label_password,
+.label_confirm_password {
+    padding-left: 8px;
+    transform: translateY(-58px);
+    font-size: 10px;
+    color: #a8b8e5;
+    position: absolute;
+    text-transform: uppercase;
+    border: 8px double transparent;
+    line-height: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+    transition-behavior: normal;
+    transition-property: transform, opacity;
+    opacity: 1;
+    pointer-events: none;
+}
+
+input:focus~.span_username,
+input:focus~.span_password,
+input:focus~.span_confirm_password {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+}
+
+.span_username,
+.span_password,
+.span_confirm_password {
+    position: absolute;
+    color: #a8b8e5;
+    text-transform: uppercase;
+    padding-left: 9px;
+    letter-spacing: 0.06em;
+    transform: translateY(-61.5px);
+    font-size: 9px;
+    pointer-events: none;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    opacity: 0;
+    display: none;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Email input styles */
+
+.input-container-user {
+    position: relative;
+    /* Add position relative */
+    margin-top: 5px;
+    /* Reduce margin-top */
+    margin-bottom: 5px;
+    /* Reduce margin-bottom */
+}
+
+.input-container-user input {
+    background: #1a1939;
+    border: 2px solid transparent;
+    width: 291px;
+    /* Adjust width */
+    height: 44px;
+    /* Adjust height */
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+    padding: 8px;
+    line-height: 19.2px;
+    font-size: 16px;
+    box-sizing: border-box;
+    display: block;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+}
+
+.input-container-user input:focus {
+    outline: none;
+    /* Removes the default blue outline */
+    border-image: linear-gradient(111.7deg,
+            rgb(255, 255, 255),
+            rgb(128, 163, 252),
+            rgb(255, 255, 255),
+            rgba(222, 185, 255, 0.9));
+    /* Gradient border */
+    border-image-slice: 1;
+    /* Ensures the gradient applies across the entire border */
+    border-radius: 10px;
+    background-color: rgb(30, 40, 68);
+}
+
+.input-container-user input:hover {
+    border: 2px solid rgba(126, 126, 126, 0.15);
+    color: rgb(219, 224, 238);
+    background-color: rgba(31, 40, 69, 0.5);
+}
+
+.input-container-user input:hover:focus {
+    outline: none;
+    border-image: linear-gradient(111.7deg,
+            rgb(255, 255, 255),
+            rgb(128, 163, 252),
+            rgb(255, 255, 255),
+            rgba(222, 185, 255, 0.9));
+    border-image-slice: 1;
+    border-radius: 10px;
+    background-color: rgb(30, 40, 68);
+}
+
+.input-container-user input:hover:focus:not(:placeholder-shown) {
+    outline: none;
+    border-image: linear-gradient(111.7deg,
+            rgb(255, 255, 255),
+            rgb(128, 163, 252),
+            rgb(255, 255, 255),
+            rgba(222, 185, 255, 0.9));
+    border-image-slice: 1;
+    border-radius: 10px;
+    background-color: rgb(30, 40, 68);
+}
+
+.input-container-pwd {
+    position: relative;
+    /* Add position relative */
+    margin-top: 5px;
+    /* Reduce margin-top */
+    margin-bottom: 5px;
+    /* Reduce margin-bottom */
+}
+
+.input-container-pwd input {
+    background: #1a1939;
+    border: 2px solid transparent;
+    width: 291px;
+    /* Adjust width */
+    height: 44px;
+    /* Adjust height */
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+    padding: 8px;
+    line-height: 19.2px;
+    font-size: 16px;
+    box-sizing: border-box;
+    display: block;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+}
+
+.input-container-pwd input:focus {
+    outline: none;
+    /* Removes the default blue outline */
+    border-image: linear-gradient(111.7deg,
+            rgb(255, 255, 255),
+            rgb(128, 163, 252),
+            rgb(255, 255, 255),
+            rgba(222, 185, 255, 0.9));
+    /* Gradient border */
+    border-image-slice: 1;
+    /* Ensures the gradient applies across the entire border */
+    border-radius: 10px;
+    background-color: rgb(30, 40, 68);
+}
+
+.input-container-pwd input:hover {
+    border: 2px solid rgba(126, 126, 126, 0.15);
+    color: rgb(219, 224, 238);
+    background-color: rgba(31, 40, 69, 0.5);
+}
+
+.input-container-pwd input:hover:focus {
+    outline: none;
+    border-image: linear-gradient(111.7deg,
+            rgb(255, 255, 255),
+            rgb(128, 163, 252),
+            rgb(255, 255, 255),
+            rgba(222, 185, 255, 0.9));
+    border-image-slice: 1;
+    border-radius: 10px;
+    background-color: rgb(30, 40, 68);
+}
+
+.input-container-pwd input:focus~.toggle-password,
+.toggle-password:focus {
+    display: block;
+    /* Show when input is focused or icon is focused */
+}
+
+input:focus+label,
+input:not(:placeholder-shown)+label {
+    transform: translateY(-59px);
+    font-size: 12px;
+    visibility: hidden;
+    /* Hide label */
+}
+
+/* Hide placeholder */
+input::placeholder {
+    color: transparent;
+}
+
+/* Show placeholder on focus */
+input:focus::placeholder {
+    color: #999;
+    /* or any color you prefer */
+}
+
+/* Label styles */
+.label_email {
+    padding-left: 8px;
+    transform: translateY(-59px);
+    font-size: 10px;
+    color: #a8b8e5;
+    position: absolute;
+    text-transform: uppercase;
+    border: 8px double transparent;
+    line-height: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+    transition-behavior: normal;
+    transition-property: transform, opacity;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.input-label {
+    padding-left: 8px;
+    transform: translateY(-59px);
+    font-size: 10px;
+    color: #a8b8e5;
+    position: absolute;
+    text-transform: uppercase;
+    border: 8px double transparent;
+    line-height: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+    transition-behavior: normal;
+    transition-property: transform, opacity;
+    opacity: 1;
+    pointer-events: none;
+}
+
+input:focus~.span_email {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+}
+
+/* Span styles */
+.span_email {
+    position: absolute;
+    color: #a8b8e5;
+    text-transform: uppercase;
+    padding-left: 9px;
+    letter-spacing: 0.06em;
+    transform: translateY(-60.7px);
+    font-size: 9px;
+    pointer-events: none;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    opacity: 0;
+    display: none;
+}
+
+.input-container {
+    background: #1a1939;
+    /* Solid background for the div */
+    border-radius: 4px;
+    width: 100%;
+    /* Adjust as needed */
+    display: flex;
+    /* Align content flexibly */
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: none;
+    /* Hide by default */
+    width: 20px;
+    /* Make the icon smaller */
+    height: 20px;
+    /* Make the icon smaller */
+}
+
+.input-container-user input:focus~.toggle-password,
+.toggle-password:focus {
+    display: block;
+    /* Show when input is focused or icon is focused */
+}
+
+.toggle-password {
+    cursor: default;
+    /* Ensure cursor is a pointer on hover */
+}
+
+.sign-in-button {
+    background: rgb(46, 61, 103);
+    display: block;
+    height: 72px;
+    border-radius: 27px;
+    padding: 0px;
+    color: rgb(245, 245, 245);
+    border: 1px solid rgb(62, 81, 138);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 72px;
+    display: flex;
+    /* Use flexbox for centering */
+    align-items: center;
+    /* Vertically center the content */
+    justify-content: center;
+    /* Horizontally center the content */
+    box-shadow: 0 0 25px rgb(46, 61, 103);
+}
+
+.sign-in-button:hover {
+    box-shadow: 0 0 5px rgb(46, 61, 103),
+                0 0 25px rgb(46, 61, 103),
+                0 0 50px rgb(46, 61, 103),
+                0 0 100px rgb(46, 61, 103);
+}
+
+.sign-in-button:disabled {
+    background: rgb(18, 33, 64);
+    /* Change background color when disabled */
+    cursor: not-allowed;
+    border: none;
+    /* Change cursor when disabled */
+    box-shadow: none;
+}
+
+.sign-in-button img {
+    fill: rgb(245, 245, 245);
+    width: 32px;
+    height: 32px;
+    inset: auto;
+    align-items: center;
+    /* Vertically center the content */
+    justify-content: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    /* Horizontally center */
+    align-items: center;
+    /* Vertically center */
+    margin-top: 150px;
+    /* Reduce margin-top */
+}
+
+.btn-pwd {
+    margin-top: 50px;
+    /* password button*/
+}
+
+form button {
+    font-size: 16px;
+    padding: 10px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: rgb(62, 81, 134);
+}
+
+.nav-but {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+footer {
+    position: relative;
+    justify-content: center;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    color: #c0c0c0;
+}
+
+a {
+    font-size: 14px;
+    color: #c0c0c0;
+    text-decoration: none;
+    display: block;
+    margin: 10px 0;
+    text-align: center;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #ffffff;
+}
+
+.password-header {
+    margin-bottom: 20px;
+    /* Reduce margin-bottom */
+}
+
+/* Password strength requirements styles */
+.password-requirements {
+    margin: 5px 0;
+    /* Reduce margin */
+    font-size: 12.8px;
+    color: #a8b8e5;
+    display: inline;
+    flex-direction: column;
+    gap: 2px;
+    /* Reduce the space between paragraphs */
+    transform-origin: left bottom;
+    transition: 0.25s;
+    position: relative;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 0px;
+}
+
+.requirement {
+    position: relative;
+    padding-left: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.requirement::before {
+    content: url("/img/false.svg");
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+}
+
+.requirement.valid::before {
+    content: url("/img/true.svg");
+}
+
+/* Password strength messages styles */
+.password-strength {
+    margin-top: 5px;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    border-radius: 4px;
+    display: none;
+    /* Hide by default */
+}
+
+.password-strength.weak {
+    color: rgb(157, 33, 160);
+    display: block;
+}
+
+.password-strength.okay {
+    color: rgb(238, 172, 20);
+    display: block;
+}
+
+.password-strength.strong {
+    color: rgb(57, 204, 175);
+    display: block;
+}
+
+.password-strength.mismatch {
+    color: rgb(157, 33, 160);
+    display: block;
+    text-align: left;
+    /* Align text to the left */
+    margin-top: 2px;
+    /* Reduce margin to be closer to the input */
+    position: absolute;
+    /* Ensure it does not affect the position of other elements */
+    top: 100%;
+    /* Position it below the input */
+    padding-left: 24px;
+    /* Add padding for the icon */
+}
+
+.password-strength.mismatch::before {
+    content: url("/img/pwd.svg");
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input_password:focus.weak,
+.input_password:active.weak,
+.input_password:hover:focus.weak {
+    border: 2px solid rgb(157, 33, 160);
+    border-radius: 0px;
+}
+
+.input_password:focus.okay,
+.input_password:active.okay,
+.input_password:hover:focus.okay {
+    border: 2px solid rgb(238, 172, 20);
+    border-radius: 0px;
+}
+
+.input_password:focus.strong,
+.input_password:active.strong,
+.input_password:hover:focus.strong {
+    border: 2px solid rgb(57, 204, 175);
+    border-radius: 0px;
+}
+
+.input_confirm_password:focus.mismatch,
+.input_confirm_password:active.mismatch,
+.input_confirm_password:hover:focus.mismatch {
+    border: 2px solid rgb(157, 33, 160);
+    border-radius: 0px;
+}
+
+.input_confirm_password.mismatch+.toggle-password {
+    content: url("/img/pwd.svg");
+}
+
+.input_password:focus.weak,
+.input_password:active.weak,
+.input_password:hover:focus.weak {
+    border: 2px solid rgb(157, 33, 160);
+    border-radius: 0px;
+}
+
+.input_password:focus.okay,
+.input_password:active.okay,
+.input_password:hover:focus.okay {
+    border: 2px solid rgb(238, 172, 20);
+    border-radius: 0px;
+}
+
+.input_password:focus.strong,
+.input_password:active.strong,
+.input_password:hover:focus.strong {
+    border: 2px solid rgb(57, 204, 175);
+    border-radius: 0px;
+}
+
+.label_confirm_password {
+    padding-left: 8px;
+    transform: translateY(-59px);
+    font-size: 10px;
+    color: #a8b8e5;
+    position: absolute;
+    text-transform: uppercase;
+    border: 8px double transparent;
+    line-height: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+    transition-behavior: normal;
+    transition-property: transform, opacity;
+    opacity: 1;
+    pointer-events: none;
+}
+
+input:focus~.span_confirm_password,
+input:not(:placeholder-shown)~.span_confirm_password {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+}
+
+input:focus~.label_confirm_password,
+input:not(:placeholder-shown)~.label_confirm_password {
+    visibility: hidden;
+    /* Hide label */
+}
+
+.span_confirm_password {
+    position: absolute;
+    color: #a8b8e5;
+    text-transform: uppercase;
+    padding-left: 9px;
+    letter-spacing: 0.06em;
+    transform: translateY(-61.5px);
+    font-size: 9px;
+    pointer-events: none;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    opacity: 0;
+    display: none;
+}
+
+/*-----------------*/
+
+/* Date input styles */
+
+.group-input {
+    display: flex;
+    /* Align items horizontally */
+    gap: 10px;
+    /* Add space between inputs */
+}
+
+.input-day,
+.input-month,
+.input-year {
+    background: #1a1939;
+    border: 2px solid transparent;
+    width: 90px;
+    /* Adjust width */
+    height: 44px;
+    /* Adjust height */
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+    padding: 8px;
+    padding-top: 15px;
+    line-height: 19.2px;
+    font-size: 16px;
+    box-sizing: border-box;
+    display: block;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+}
+
+.input-day:focus,
+.input-month:focus,
+.input-year:focus {
+    outline: none;
+    /* Removes the default blue outline */
+    border-image: linear-gradient(111.7deg,
+            rgb(255, 255, 255),
+            rgb(128, 163, 252),
+            rgb(255, 255, 255),
+            rgba(222, 185, 255, 0.9));
+    /* Gradient border */
+    border-image-slice: 1;
+    /* Ensures the gradient applies across the entire border */
+    border-radius: 10px;
+    background-color: rgb(30, 40, 68);
+}
+
+.input-day:hover,
+.input-month:hover,
+.input-year:hover {
+    border: 2px solid rgba(126, 126, 126, 0.15);
+    color: rgb(219, 224, 238);
+    background-color: rgba(31, 40, 69, 0.5);
+}
+
+.input-day:hover:focus,
+.input-month:hover:focus,
+.input-year:hover:focus {
+    outline: none;
+    border-image: linear-gradient(111.7deg,
+            rgb(255, 255, 255),
+            rgb(128, 163, 252),
+            rgb(255, 255, 255),
+            rgba(222, 185, 255, 0.9));
+    border-image-slice: 1;
+    border-radius: 10px;
+    background-color: rgb(30, 40, 68);
+}
+
+.input-day:hover:focus:not(:placeholder-shown),
+.input-month:hover:focus:not(:placeholder-shown),
+.input-year:hover:focus:not(:placeholder-shown) {
+    outline: none;
+    border-image: linear-gradient(111.7deg,
+            rgb(255, 255, 255),
+            rgb(128, 163, 252),
+            rgb(255, 255, 255),
+            rgba(222, 185, 255, 0.9));
+    border-image-slice: 1;
+    border-radius: 10px;
+    background-color: rgb(30, 40, 68);
+}
+
+.label_day,
+.label_month,
+.label_year {
+    padding-left: 8px;
+    transform: translateY(-58px);
+    font-size: 10px;
+    color: #99a8cf;
+    position: absolute;
+    text-transform: uppercase;
+    border: 8px double transparent;
+    line-height: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transition-duration: 0.25s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0s;
+    transition-behavior: normal;
+    transition-property: transform, opacity;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.span_day,
+.span_month,
+.span_year {
+    position: absolute;
+    color: #a8b8e5;
+    text-transform: uppercase;
+    padding-left: 9px;
+    letter-spacing: 0.06em;
+    transform: translateY(-61.5px);
+    font-size: 9px;
+    pointer-events: none;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    opacity: 0;
+    display: none;
+}
+
+.input-day:focus~.label_day,
+.input-day:not(:placeholder-shown)~.label_day,
+.input-month:focus~.label_month,
+.input-month:not(:placeholder-shown)~.label_month,
+.input-year:focus~.label_year,
+.input-year:not(:placeholder-shown)~.label_year {
+    visibility: hidden;
+    /* Hide label */
+}
+
+.input-day:focus~.span_day,
+.input-day:not(:placeholder-shown)~.span_day,
+.input-month:focus~.span_month,
+.input-month:not(:placeholder-shown)~.span_month,
+.input-year:focus~.span_year,
+.input-year:not(:placeholder-shown)~.span_year {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+}
+
+/* Remove arrows from number inputs */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield; /* Standard property for compatibility */
+    -moz-appearance: textfield; /* Firefox-specific property */
+}
+
+/* ...existing code... */
+
+.animation-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.animation-container .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.animation-container .animation {
+    width: 100%;
+    max-width: 300px;
+}
+
+.animation-container .animation img {
+    width: 100%;
+    height: auto;
+}
+
+/* ...existing code... */
+
+/* Loader styles */
+.ui-abstergo {
+  --primary: #fff;
+  --secondary: rgba(255, 255, 255, 0.3);
+  --shadow-blur: 3px;
+  --text-shadow-blur: 3px;
+  --animation-duration: 2s;
+  --size: 1;
+}
+
+.abstergo-loader * {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.ui-abstergo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  row-gap: 30px;
+  scale: var(--size);
+}
+
+.ui-abstergo .ui-text {
+  color: var(--primary);
+  text-shadow: 0 0 var(--text-shadow-blur) var(--secondary);
+  font-family: Menlo, sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  -webkit-column-gap: 3px;
+  -moz-column-gap: 3px;
+  column-gap: 3px;
+}
+
+.ui-abstergo .ui-dot {
+  content: "";
+  display: block;
+  width: 3px;
+  height: 3px;
+  -webkit-animation: dots var(--animation-duration) infinite linear;
+  animation: dots var(--animation-duration) infinite linear;
+  -webkit-animation-delay: .4s;
+  animation-delay: .4s;
+  background-color: var(--primary);
+}
+
+.ui-abstergo .ui-dot:nth-child(2) {
+  -webkit-animation-delay: .8s;
+  animation-delay: .8s;
+}
+
+.ui-abstergo .ui-dot:nth-child(3) {
+  -webkit-animation-delay: 1.2s;
+  animation-delay: 1.2s;
+}
+
+.ui-abstergo .ui-dot+.ui-dot {
+  margin-left: 3px;
+}
+
+.abstergo-loader {
+  width: 103px;
+  height: 90px;
+  position: relative;
+}
+
+.abstergo-loader div {
+  width: 50px;
+  border-right: 12px solid transparent;
+  border-left: 12px solid transparent;
+  border-top: 21px solid var(--primary);
+  position: absolute;
+  -webkit-filter: drop-shadow(0 0 var(--shadow-blur) var(--secondary));
+  filter: drop-shadow(0 0 var(--shadow-blur) var(--secondary));
+}
+
+.abstergo-loader div:nth-child(1) {
+  top: 27px;
+  left: 7px;
+  rotate: -60deg;
+  -webkit-animation: line1 var(--animation-duration) linear infinite alternate;
+  animation: line1 var(--animation-duration) linear infinite alternate;
+}
+
+.abstergo-loader div:nth-child(2) {
+  bottom: 2px;
+  left: 0;
+  rotate: 180deg;
+  -webkit-animation: line2 var(--animation-duration) linear infinite alternate;
+  animation: line2 var(--animation-duration) linear infinite alternate;
+}
+
+.abstergo-loader div:nth-child(3) {
+  bottom: 16px;
+  right: -9px;
+  rotate: 60deg;
+  -webkit-animation: line3 var(--animation-duration) linear infinite alternate;
+  animation: line3 var(--animation-duration) linear infinite alternate;
+}
+
+.abstergo-loader:hover div:nth-child(1) {
+  top: 21px;
+  left: 14px;
+  rotate: 60deg;
+}
+
+.abstergo-loader:hover div:nth-child(2) {
+  bottom: 5px;
+  left: -8px;
+  rotate: 300deg;
+}
+
+.abstergo-loader:hover div:nth-child(3) {
+  bottom: 7px;
+  right: -11px;
+  rotate: 180deg;
+}
+
+@-webkit-keyframes line1 {
+  0%,
+  40% {
+    top: 27px;
+    left: 7px;
+    rotate: -60deg;
+  }
+
+  60%,
+  100% {
+    top: 22px;
+    left: 14px;
+    rotate: 60deg;
+  }
+}
+
+@keyframes line1 {
+  0%,
+  40% {
+    top: 27px;
+    left: 7px;
+    rotate: -60deg;
+  }
+
+  60%,
+  100% {
+    top: 22px;
+    left: 14px;
+    rotate: 60deg;
+  }
+}
+
+@-webkit-keyframes line2 {
+  0%,
+  40% {
+    bottom: 2px;
+    left: 0;
+    rotate: 180deg;
+  }
+
+  60%,
+  100% {
+    bottom: 5px;
+    left: -8px;
+    rotate: 300deg;
+  }
+}
+
+@keyframes line2 {
+  0%,
+  40% {
+    bottom: 2px;
+    left: 0;
+    rotate: 180deg;
+  }
+
+  60%,
+  100% {
+    bottom: 5px;
+    left: -8px;
+    rotate: 300deg;
+  }
+}
+
+@-webkit-keyframes line3 {
+  0%,
+  40% {
+    bottom: 16px;
+    right: -9px;
+    rotate: 60deg;
+  }
+
+  60%,
+  100% {
+    bottom: 7px;
+    right: -11px;
+    rotate: 180deg;
+  }
+}
+
+@keyframes line3 {
+  0%,
+  40% {
+    bottom: 16px;
+    right: -9px;
+    rotate: 60deg;
+  }
+
+  60%,
+  100% {
+    bottom: 7px;
+    right: -11px;
+    rotate: 180deg;
+  }
+}
+
+@-webkit-keyframes dots {
+  0% {
+    background-color: var(--secondary);
+  }
+
+  30% {
+    background-color: var(--primary);
+  }
+
+  70%, 100% {
+    background-color: var(--secondary);
+  }
+}
+
+@keyframes dots {
+  0% {
+    background-color: var(--secondary);
+  }
+
+  30% {
+    background-color: var(--primary);
+  }
+
+  70%, 100% {
+    background-color: var(--secondary);
+  }
+}
+
+/* ...existing code... */
+
+.shadow__btn {
+    padding: 10px 20px;
+    border: none;
+    font-size: 17px;
+    color: #fff;
+    border-radius: 7px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: 0.5s;
+    transition-property: box-shadow;
+}
+
+.shadow__btn {
+    background: rgb(46, 61, 103);
+    box-shadow: 0 0 25px rgb(46, 61, 103);
+}
+
+.shadow__btn:hover {
+    box-shadow: 0 0 5px rgb(46, 61, 103),
+                0 0 25px rgb(46, 61, 103),
+                0 0 50px rgb(46, 61, 103),
+                0 0 100px rgb(46, 61, 103);
+}
+
+.shadow__btn:disabled {
+    box-shadow: none;
+}
+
+/* Apply shadow effect to sign-in buttons */
+.sign-in-button {
+    /* ...existing code... */
+    background: rgb(46, 61, 103);
+    box-shadow: 0 0 25px rgb(46, 61, 103);
+}
+
+.sign-in-button:hover {
+    box-shadow: 0 0 5px rgb(46, 61, 103),
+                0 0 25px rgb(46, 61, 103),
+                0 0 50px rgb(46, 61, 103),
+                0 0 100px rgb(46, 61, 103);
+}
+
+.sign-in-button:disabled {
+    box-shadow: none;
+}

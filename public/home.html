@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>League of Legends - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/img/arcane2_desktop_default_2x.jpeg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #c8aa6e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 1;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            text-shadow: 0 0 20px rgba(200, 170, 110, 0.8),
+                0 0 40px rgba(200, 170, 110, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(200, 170, 110, 0.8),
+                    0 0 40px rgba(200, 170, 110, 0.5);
+            }
+
+            to {
+                text-shadow: 0 0 30px rgba(200, 170, 110, 1),
+                    0 0 60px rgba(200, 170, 110, 0.7);
+            }
+        }
+
+        p {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            color: #f0e6d2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .welcome-message {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #c8aa6e;
+            font-weight: bold;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: #0a0a0c;
+            background: linear-gradient(135deg, #c8aa6e 0%, #d4b076 100%);
+            border: 3px solid #c8aa6e;
+            border-radius: 0;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #c8aa6e;
+            box-shadow: 0 0 30px rgba(200, 170, 110, 0.6);
+            transform: translateY(-3px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .logout-btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            margin-top: 2rem;
+            background: rgba(200, 170, 110, 0.2);
+            border: 2px solid #c8aa6e;
+        }
+
+        .logout-btn:hover {
+            background: rgba(200, 170, 110, 0.3);
+        }
+
+        /* Hidden by default */
+        .auth-section,
+        .unauth-section {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>League of Legends</h1>
+
+        <!-- Section for authenticated users -->
+        <div class="auth-section">
+            <p class="welcome-message">Welcome, <span id="username"></span>!</p>
+            <p>Join the battle on Summoner's Rift</p>
+            <a href="https://www.leagueoflegends.com" class="btn" target="_blank">Download the Game</a>
+            <br>
+            <button class="btn logout-btn" id="logout-btn">Logout</button>
+        </div>
+
+        <!-- Section for unauthenticated users -->
+        <div class="unauth-section">
+            <p>Choose your path, Summoner.</p>
+            <div class="btn-group">
+                <a href="/login/login.html" class="btn">Login</a>
+                <a href="/signup/signup.html" class="btn">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication status on page load
+        function checkAuthStatus() {
+            const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) ||
+                JSON.parse(sessionStorage.getItem('loggedInUser'));
+
+            const authSection = document.querySelector('.auth-section');
+            const unauthSection = document.querySelector('.unauth-section');
+            const usernameSpan = document.getElementById('username');
+
+            if (loggedInUser && loggedInUser.username) {
+                // User is authenticated
+                usernameSpan.textContent = loggedInUser.username;
+                authSection.style.display = 'block';
+                unauthSection.style.display = 'none';
+            } else {
+                // User is not authenticated
+                authSection.style.display = 'none';
+                unauthSection.style.display = 'block';
+            }
+        }
+
+        // Logout functionality
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            localStorage.removeItem('loggedInUser');
+            sessionStorage.removeItem('loggedInUser');
+
+            // Refresh the page to show unauthenticated UI
+            window.location.reload();
+        });
+
+        // Run auth check on page load
+        checkAuthStatus();
+    </script>
+</body>
+
+</html>
